@@ -17,6 +17,72 @@ end
 
 ----------------- F U N C T I O N S ----------------------
 
+-- -- NS100#0001
+
+
+
+-- local isDead = false
+
+-- parts = {
+--     ['RFoot'] = 52301,
+--     ['LFoot'] = 14201,
+--     ['RHand'] = 57005,
+--     ['LHand'] = 18905,
+--     ['RKnee'] = 36864,
+--     ['LKnee'] = 63931,
+--     ['Head'] = 31086,
+--     ['Neck'] = 39317,
+--     ['RArm'] = 28252,
+--     ['LArn'] = 61163,
+--     ['Chest'] = 24818,
+--     ['Pelvis'] = 11816,
+--     ['RShoulder'] = 40269,
+--     ['LShoulder'] = 45509,
+--     ['RWrist'] = 28422,
+--     ['LWrist'] = 60309,
+--     ['Tounge'] = 47495,
+--     ['UpperLip'] = 20178,
+--     ['LowerLip'] = 17188,
+--     ['RThigh'] = 51826,
+--     ['LThigh'] = 58217,
+-- }
+
+
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(0)
+
+--         local playerPed = PlayerPedId()
+--         local coords = GetEntityCoords(PlayerPedId())
+--         local FoundLastDamagedBone, LastDamagedBone = GetPedLastDamageBone(PlayerPedId())
+--         local DamagedBone = GetKeyOfValue(parts, LastDamagedBone)
+
+--             SetEntityOnlyDamagedByPlayer(PlayerPedId(), true)
+-- 			if DamagedBone == 'Head' and not IsEntityDead(PlayerPedId()) then
+
+--                 SetEntityHealth(PlayerPedId(), 0)	
+		
+-- 			end
+--         end
+-- end)
+
+
+
+-- function GetKeyOfValue(Table, SearchedFor)
+--     for Key, Value in pairs(Table) do
+--         if SearchedFor == Value then
+--             return Key
+--         end
+--     end
+--     return nil
+-- end
+
+
+
+
+
+
+
 RegisterCommand('rev', function() 
     local ped = PlayerPedId()
 
@@ -41,6 +107,14 @@ RegisterCommand('rev', function()
                 custom = true
             })
 
+            if not (IsOutsideOfRedZone(ped)) then   
+                exports['t-notify']:Alert({
+                style = 'info',
+                duration = 2900,
+                message = '**You Arent Outside Of The Redzone.**',
+                custom = true
+            })
+        end
         end
 end)
 
